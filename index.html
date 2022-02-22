@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,20 @@
     <title>Login / Sign Up Form</title>
     <link rel="stylesheet" href="./src/main.css">
 </head>
+
 <body>
-    
+    <div class="container">
+        <form class="form" id="login">
+            <h1 class="form__title">Login</h1>
+            <div class="form__message form__message--error">Incorret username/password combination</div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Username or email">
+            <div class="form__input-error-message">This is an error message</div>
+            </div>
+        </form>
+    </div>
+
+    <script src="./src/main.js"></script>
 </body>
+
 </html>
