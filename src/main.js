@@ -1,4 +1,3 @@
-
 function setFormMessage(formElement, type, message) {
     const messageElement = formElement.querySelector(".form__message");
 
@@ -17,6 +16,61 @@ function clearInputError(inputElement) {
     inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
 }
 
+function onCreateAccount() {
+    const loginForm = document.querySelector("#login");
+    const createAccountForm = document.querySelector("#createAccount");
+
+    const email = document.querySelector("#email").value;
+    const username = document.querySelector("#username").value;
+    const password = document.querySelector("#create-account-password").value;
+    const confirmPassword = document.querySelector("#confirm-password").value;
+
+    if (password !== confirmPassword) {
+        // alert('Password are different');
+        setFormMessage(createAccountForm, "error", "Couldn't create an account, check password please!");
+
+    } else {
+        const form = {
+            email,
+            username,
+            password,
+        };
+
+        const formStringified = JSON.stringify(form);
+
+        localStorage.setItem('user', formStringified);
+
+        loginForm.classList.remove("form--hidden");
+        createAccountForm.classList.add("form--hidden");
+    }
+
+}
+
+function onLoginUser() {
+
+    const user = localStorage.getItem('user');
+    const userParsed = JSON.parse(user);
+
+    const usernameOrEmailInputValue = document.querySelector('#username-or-email').value;
+    const passwordInputValue = document.querySelector('#password').value;
+
+    console.log({
+        usernameOrEmailInputValue,
+        passwordInputValue
+    });
+
+    if (userParsed.username !== usernameOrEmailInputValue && userParsed.email !== usernameOrEmailInputValue) {
+        alert("wrong username or email");
+    } else if (userParsed.password !== passwordInputValue) {
+        alert("wrong username or email");
+    } else {
+        alert('You have been logged successfuly!Go fuck yourself')
+    }
+
+
+
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.querySelector("#login");
     const createAccountForm = document.querySelector("#createAccount");
@@ -33,13 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
         createAccountForm.classList.add("form--hidden");
     });
 
-    loginForm.addEventListener("submit", e => {
-        e.preventDefault();
+    // loginForm.addEventListener("submit", e => {
+    //     e.preventDefault();
 
-        // Perform your AJAX/Fetch login
-
-        setFormMessage(loginForm, "error", "Invalid username or password");
-    });
+    //     setFormMessage(loginForm, "error", "Invalid username or password");
+    // });
 
     document.querySelectorAll(".form__input").forEach(inputElement => {
         inputElement.addEventListener("blur", e => {
