@@ -1,6 +1,6 @@
 body {
-    --color-primary: #009579;
-    --color-primary-dark: #007f67;
+    --color-primary: #156568;
+    --color-primary-dark: #0a3841;
     --color-secondary: #252c6a;
     --color-error: #cc3333;
     --color-success: #4bb544;
@@ -27,6 +27,7 @@ box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
 border-radius: var(--border-radius);
 background: #ffffff;
 font-family: 'Quicksand', sans-serif;
+border-radius: 10px;
 }
 
 .form--hidden {
